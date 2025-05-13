@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Button Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body
+    class="bg-gray-100 flex flex-col items-center justify-center min-h-screen"
+  >
+    <div class="w-full max-w-xl mt-8 mb-6">
+      <label
+        for="apiTokenInput"
+        class="block mb-2 text-lg font-medium text-gray-700"
+        >API Token</label
+      >
+      <input
+        type="password"
+        id="apiTokenInput"
+        class="w-full p-2 border rounded"
+        placeholder="Enter your API token here"
+      />
+    </div>
+    <div class="w-full max-w-xl mb-6">
+      <label for="promptInput" class="block mb-2 text-lg font-medium text-gray-700">Prompt</label>
+      <textarea id="promptInput" class="w-full p-2 border rounded" rows="3">請根據以下描述繪畫一張4格漫畫，「我曾參與一次活動，當中的經歷令我覺醒過來，明白到『己所不欲，勿施於人』這道理。」</textarea>
+    </div>
+    <div class="text-center">
+      <button
+        id="testBtn"
+        class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+      >
+        Test Chat Completions
+      </button>
+      <div id="loading1" class="hidden text-blue-600 mt-2">Loading...</div>
+      <button
+        id="testBtn2"
+        class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition ml-4"
+      >
+        Test Images Generations
+      </button>
+      <div id="loading2" class="hidden text-blue-600 mt-2">Loading...</div>
+    </div>
+    <img src="" width="390" height="390" id="target" style="display: none" />
+    <div class="mt-8 w-full max-w-xl mx-auto">
+      <label
+        for="streamedContent"
+        class="block mb-2 text-lg font-medium text-gray-700"
+        >Streamed Content</label
+      >
+      <textarea
+        id="streamedContent"
+        class="w-full p-2 border rounded"
+        rows="10"
+        readonly
+      ></textarea>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
