@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>AssemblyAI Transcription Demo</h1>
+    <label for="apiPrefix">Enter first 6 characters of API key:</label>
+    <input type="text" id="apiPrefix" maxlength="6" style="width: 100px" />
+    <div id="apiPrefixStatus" style="color: red; margin-bottom: 10px"></div>
+    <button id="recordBtn">Record</button>
+    <button id="stopBtn" disabled>Stop</button>
+    <br /><br />
+    <label for="transcript">Transcription Result:</label>
+    <input type="text" id="transcript" readonly style="width: 80%" />
+    <br /><br />
+    <div id="status"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
