@@ -64,7 +64,7 @@ async function transcribeWithWhisper(audioBlob) {
   const formData = new FormData();
   formData.append("file", audioBlob, "audio.webm");
   formData.append("model", "whisper-1");
-  formData.append("language", "cantonese");
+  formData.append("language", "yue");
   // You can add 'language' param if you want to force a language, e.g. formData.append('language', 'en');
   try {
     const response = await fetch(BASE_URL, {
