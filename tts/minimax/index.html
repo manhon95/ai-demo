@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text to Speech (Minimax)</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 2em;
+        background: #f9f9f9;
+      }
+      .tts-container {
+        background: #fff;
+        padding: 2em;
+        border-radius: 8px;
+        max-width: 500px;
+        margin: auto;
+        box-shadow: 0 2px 8px #0001;
+      }
+      label {
+        display: block;
+        margin-top: 1em;
+      }
+      textarea {
+        width: 100%;
+        min-height: 80px;
+      }
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 0.5em;
+      }
+      .slider-group {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+      }
+      .slider-group input[type="range"] {
+        flex: 1;
+      }
+      button {
+        margin-top: 1.5em;
+        padding: 0.7em 2em;
+        font-size: 1em;
+      }
+      audio {
+        margin-top: 1.5em;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tts-container">
+      <h2>Text to Speech (Minimax)</h2>
+      <label
+        >API Key
+        <input type="text" id="api_key" placeholder="請輸入您的 api_key 前6位"
+      /></label>
+      <label
+        >Text
+        <textarea id="tts_text" placeholder="請輸入要轉語音的文字">任天堂新一代主機 Switch 2 率先採用最新 microSD Express 記憶卡，與一般 SD 卡最大分別，就是資料傳送速度快得多，有助於加快遊戲載入速度。有外國玩家就親自比較不同儲存方式的表現，結果發現最新 microSD Express 卡的速度已經足以媲美內置儲存，至於傳統 Game Card 的速度則明顯落後。</textarea>
+      </label>
+      <label
+        >Language
+        <select id="language">
+          <option value="Chinese,Yue">粵</option>
+          <option value="Chinese">普</option>
+          <option value="English">英</option>
+        </select>
+      </label>
+      <label
+        >Model
+        <select id="model">
+          <option value="speech-02-hd">speech-02-hd</option>
+          <!-- 可根據需要添加更多模型 -->
+        </select>
+      </label>
+      <label
+        >Voice ID
+        <select id="voice_id">
+          <option value="female-tianmei">female-tianmei</option>
+          <!-- 可根據需要添加更多 voice_id -->
+        </select>
+      </label>
+      <div class="slider-group">
+        <label for="speed">Speed</label>
+        <input
+          type="range"
+          id="speed"
+          min="0.5"
+          max="2"
+          step="0.01"
+          value="1"
+        />
+        <span id="speed_val">1</span>
+      </div>
+      <div class="slider-group">
+        <label for="pitch">Pitch</label>
+        <input type="range" id="pitch" min="-12" max="12" step="1" value="0" />
+        <span id="pitch_val">0</span>
+      </div>
+      <div class="slider-group">
+        <label for="vol">Volume</label>
+        <input type="range" id="vol" min="0.1" max="2" step="0.01" value="1" />
+        <span id="vol_val">1</span>
+      </div>
+      <button id="tts_btn">生成語音</button>
+      <audio id="tts_audio" controls style="display: none"></audio>
+      <a id="download_link" style="display: none" download="tts.mp3"
+        >下載語音</a
+      >
+      <div id="tts_status" style="margin-top: 1em; color: #c00"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      // Update slider values
+      document.getElementById("speed").oninput = function () {
+        document.getElementById("speed_val").textContent = this.value;
+      };
+      document.getElementById("pitch").oninput = function () {
+        document.getElementById("pitch_val").textContent = this.value;
+      };
+      document.getElementById("vol").oninput = function () {
+        document.getElementById("vol_val").textContent = this.value;
+      };
+    </script>
+  </body>
+</html>
