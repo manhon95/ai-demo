@@ -28,9 +28,26 @@ document.getElementById("testBtn").addEventListener("click", function () {
           role: "system",
         },
         {
-          content:
-            document.getElementById("promptInput").value.trim() ||
-            "我曾參與一次活動，當中的經歷令我覺醒過來，明白到『己所不欲，勿施於人』這道理",
+          content: [
+            {
+              type: "text",
+              text:
+                document.getElementById("promptInput").value.trim() ||
+                "以用以下兩張圖片作人物藍本，生成『我曾參與一次活動，當中的經歷令我覺醒過來，明白到『己所不欲，勿施於人』這道理』的漫畫",
+            },
+            {
+              type: "image_url",
+              image_url: {
+                url: "https://manhon95.github.io/ai-demo/assets/sample_boy.jpg",
+              },
+            },
+            {
+              type: "image_url",
+              image_url: {
+                url: "https://manhon95.github.io/ai-demo/assets/sample_girl.jpg",
+              },
+            },
+          ],
           role: "user",
         },
       ],
