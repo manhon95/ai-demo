@@ -20,13 +20,8 @@ document.getElementById("testBtn").addEventListener("click", function () {
     },
     body: JSON.stringify({
       stream: true,
-      model: "gpt-4o-mini",
+      model: "gpt-4o-image-vip",
       messages: [
-        {
-          content:
-            "問：你是一個口語考試練習助手，專門為教師生成「情境描述文本」和「對應的圖片生成提示詞」。請根據用戶提供的情境主題和語言，執行以下步驟：1. **生成情境文本**：- 語言：{{用戶指定的語言（如中文）}}- 內容：一段3-5 句的簡潔情境描述，適合學生口語練習（如描述場景、情緒、動作）。- 場景格數：一張圖片內生成四格漫畫，人物角色需要連貫。- 範例（中文）：> '你被困在電梯裡，燈光忽明忽暗，空氣悶熱。你聽到外面有模糊的說話聲，但按緊急按鈕後無人回應。你感到有些慌張，開始思考下一步該怎麼辦。'2. **生成圖片提示詞**：- 格式：美文，清晰描述場景關鍵元素（適合Stable Diffusion）。- 包含：場景、主體、風格、光影等細節。- 範例：> 'A person trapped in a dimly lit elevator, flickering lights, tense atmosphere, realistic style,muted colors, close-up view showing anxious expression, highly detailed.'3. **輸出格式**：- 嚴格按照以下JSON 格式回應，方便後續程式解析：```json{'text': '生成的情境文本','image_prompt': '生成的圖片提示詞'}```",
-          role: "system",
-        },
         {
           content: [
             {
