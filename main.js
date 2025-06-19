@@ -97,8 +97,8 @@ document.getElementById("testBtn").addEventListener("click", function () {
                   );
                   if (match) {
                     console.log(match);
-                    console.log(url);
                     const url = match[0]; // This is the URL you want
+                    console.log(url);
                     const img = document.getElementById("target");
                     img.src = url.slice(1, -1);
                     img.style.display = "";
