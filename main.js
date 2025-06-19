@@ -91,18 +91,20 @@ document.getElementById("testBtn").addEventListener("click", function () {
                   document.body.appendChild(textarea);
                 }
                 // Append the new content
-                const match = content.match(
-                  /\((https:\/\/filesystem\.site\/cdn\/download\/[^\s)]+)\)/
-                );
-                if (match) {
-                  console.log(match);
-                  console.log(url);
-                  const url = match[0]; // This is the URL you want
-                  const img = document.getElementById("target");
-                  img.src = url.slice(1, -1);
-                  img.style.display = "";
-                } else {
-                  textarea.value += content;
+                if (content) {
+                  const match = content.match(
+                    /\((https:\/\/filesystem\.site\/cdn\/download\/[^\s)]+)\)/
+                  );
+                  if (match) {
+                    console.log(match);
+                    console.log(url);
+                    const url = match[0]; // This is the URL you want
+                    const img = document.getElementById("target");
+                    img.src = url.slice(1, -1);
+                    img.style.display = "";
+                  } else {
+                    textarea.value += content;
+                  }
                 }
               }
               push();
