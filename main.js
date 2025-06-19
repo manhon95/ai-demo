@@ -28,7 +28,7 @@ document.getElementById("testBtn").addEventListener("click", function () {
               type: "text",
               text:
                 document.getElementById("promptInput").value.trim() ||
-                "以用以下兩張圖片作人物藍本，生成『我曾參與一次活動，當中的經歷令我覺醒過來，明白到『己所不欲，勿施於人』這道理』的漫畫",
+                "以用以下兩張圖片作人物藍本，生成『我曾參與一次活動，當中的經歷令我覺醒過來，明白到『己所不欲，勿施於人』這道理』的漫畫, ratio: 1:1, n: 1",
             },
             {
               type: "image_url",
@@ -91,7 +91,19 @@ document.getElementById("testBtn").addEventListener("click", function () {
                   document.body.appendChild(textarea);
                 }
                 // Append the new content
-                if (content) textarea.value += content;
+                const match = content.match(
+                  /\((https:\/\/filesystem\.site\/cdn\/download\/[^\s)]+)\)/
+                );
+                if (match) {
+                  console.log(match);
+                  console.log(url);
+                  const url = match[0]; // This is the URL you want
+                  const img = document.getElementById("target");
+                  img.src = url.slice(1, -1);
+                  img.style.display = "";
+                } else {
+                  textarea.value += content;
+                }
               }
               push();
             });
